@@ -62,49 +62,47 @@
 
 ## Импорт в Postman
 
-Файл `api-tracker-requests-library.yaml` совместим с форматом Insomnia v5 — Postman импортирует его напрямую.
+Для Postman используй отдельный файл в нативном формате:  
+**`api-tracker-requests-library.postman_collection.json`**
 
 1. Открой Postman
-2. **Import → Upload Files** → выбери `api-tracker-requests-library.yaml`
-3. Postman автоматически создаст коллекцию с папками
-4. Настрой переменные окружения: **Environments → Add**
+2. **Import → Upload Files** → выбери `api-tracker-requests-library.postman_collection.json`
+3. Postman создаст коллекцию с 34 папками и 152 запросами
+4. Настрой переменные: **Environments → Add**
 
 ```json
 {
+  "base_url": "https://api.tracker.yandex.net",
   "token": "<твой OAuth-токен>",
   "org_id": "<ID организации>"
 }
 ```
 
-5. В запросах переменные `{{token}}` и `{{org_id}}` подтянутся автоматически
-
-> Если Postman не принимает YAML — переименуй файл в `.json` и конвертируй через [yaml-to-json.com](https://www.convertjson.com/yaml-to-json.htm), либо используй формат экспорта Insomnia v4 (JSON).
+5. Переменные `{{token}}` и `{{org_id}}` подтянутся автоматически во всех запросах
 
 ---
 
 ## Импорт в Bruno
 
-Bruno не поддерживает прямой импорт формата Insomnia v5 YAML, но позволяет создать коллекцию вручную или через импорт Postman Collection v2.
+Bruno поддерживает прямой импорт через формат **OpenCollection (YAML)**:
 
-**Вариант 1 — через Postman Collection:**
-1. Сначала импортируй коллекцию в Postman (см. выше)
-2. В Postman: **Export → Collection v2.1**
-3. В Bruno: **Import Collection → Postman**
-
-**Вариант 2 — напрямую:**
 1. Открой Bruno
-2. **Create Collection** → укажи папку для коллекции
-3. **Import → Insomnia** → выбери `api-tracker-requests-library.yaml`
+2. **Import Collection**
+3. В поле **File Format** выбери `OpenCollection (YAML)`
+4. Выбери файл `api-tracker-requests-library.yaml`
+5. Нажми **Import**
 
-**Переменные окружения в Bruno:**  
-Создай файл `environments/prod.bru` в папке коллекции:
+**Переменные окружения в Bruno:**
+1. Открой настройки коллекции → вкладка **Environments**
+2. Нажми **+** и создай окружение (например, `Трекер`)
+3. Добавь переменные:
 
-```
-vars {
-  token: <твой OAuth-токен>
-  org_id: <ID организации>
-}
-```
+| Name | Value |
+|---|---|
+| `token` | `<твой OAuth-токен>` |
+| `org_id` | `<ID организации>` |
+
+4. Нажми **Save** и выбери созданное окружение
 
 ---
 

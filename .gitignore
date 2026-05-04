@@ -2,6 +2,7 @@
 openapi.json
 generate_insomnia.py
 generate_tracker_insomnia.py
+generate_postman.py
 Startrek_API_Insomnia.yaml
 package.json
 tsconfig.json
