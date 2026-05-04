@@ -48,7 +48,7 @@
 
 1. Открой Insomnia
 2. **File → Import → From File**
-3. Выбери `Tracker_API_Insomnia.yaml`
+3. Выбери `api-tracker-requests-library.yaml`
 4. Создай окружение: **Environments → Manage Environments** и добавь переменные:
 
 ```json
@@ -62,10 +62,10 @@
 
 ## Импорт в Postman
 
-Файл `Tracker_API_Insomnia.yaml` совместим с форматом Insomnia v5 — Postman импортирует его напрямую.
+Файл `api-tracker-requests-library.yaml` совместим с форматом Insomnia v5 — Postman импортирует его напрямую.
 
 1. Открой Postman
-2. **Import → Upload Files** → выбери `Tracker_API_Insomnia.yaml`
+2. **Import → Upload Files** → выбери `api-tracker-requests-library.yaml`
 3. Postman автоматически создаст коллекцию с папками
 4. Настрой переменные окружения: **Environments → Add**
 
@@ -94,7 +94,7 @@ Bruno не поддерживает прямой импорт формата Ins
 **Вариант 2 — напрямую:**
 1. Открой Bruno
 2. **Create Collection** → укажи папку для коллекции
-3. **Import → Insomnia** → выбери `Tracker_API_Insomnia.yaml`
+3. **Import → Insomnia** → выбери `api-tracker-requests-library.yaml`
 
 **Переменные окружения в Bruno:**  
 Создай файл `environments/prod.bru` в папке коллекции:

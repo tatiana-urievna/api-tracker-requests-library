@@ -1,0 +1,21 @@
+{
+  "name": "startrek-api",
+  "version": "1.0.0",
+  "description": "TypeScript client library for Yandex Startrek API (st-api.yandex-team.ru)",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "generate": "python3 generate.py",
+    "clean": "rm -rf dist"
+  },
+  "keywords": ["yandex", "startrek", "tracker", "api", "client"],
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "@types/node": "^20.14.0"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
