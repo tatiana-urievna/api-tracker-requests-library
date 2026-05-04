@@ -1,0 +1,4577 @@
+type: collection.insomnia.rest/5.0
+schema_version: '5.1'
+name: Yandex Tracker API v3
+meta:
+  id: wrk_7830381c21db4162bbfcf92de5be612a
+  created: 1777919928237
+  modified: 1777919928237
+  description: "Коллекция по документации:\nhttps://yandex.ru/support/tracker/ru/api-ref/about-api\n\nПеременные окружения:\n\
+    \  token       — OAuth-токен (Authorization: OAuth {{token}})\n  org_id      — ID организации Яндекс 360 (X-Org-ID)\n\
+    \  cloud_org_id — ID организации Yandex Cloud (X-Cloud-Org-ID)"
+collection:
+- name: Задачи
+  meta:
+    id: fld_02c946f6c47040d8ab5f3076d388639e
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -100
+  children:
+  - url: https://api.tracker.yandex.net/v3/issues/
+    name: Создать задачу
+    meta:
+      id: req_7bd1ac4694c94ac1b0b7d1fa4bb75f68
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/'
+      sortKey: -50
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"summary\": \"<название задачи>\",\n  \"queue\": {\n    \"id\": \"1\",\n    \"key\": \"<ключ очереди>\"\
+        \n  }\n}"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}
+    name: Получить задачу
+    meta:
+      id: req_609d23426e3443e082e9b6f1b16fcbad
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/issues/{issueId}'
+      sortKey: -100
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: expand
+      value: ''
+      disabled: true
+    - name: fields
+      value: ''
+      disabled: true
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}
+    name: Редактировать задачу
+    meta:
+      id: req_26d86d689a3a4ef1966b2c1fb4383090
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/issues/{issueId}'
+      sortKey: -150
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"summary\": \"<новое название>\"\n}"
+    parameters:
+    - name: notify
+      value: 'true'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/_move
+    name: Переместить задачу в другую очередь
+    meta:
+      id: req_d0a97a47fe094fd5b69d403c3cd2ee04
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/{issueId}/_move'
+      sortKey: -200
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: queue
+      value: <ключ очереди>
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}
+    name: Удалить задачу
+    meta:
+      id: req_2c60a84d2cfc4a5d86042a1d04779fcf
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/issues/{issueId}'
+      sortKey: -250
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/issues
+    name: Найти задачи (фильтр)
+    meta:
+      id: req_4a41837abe3e46a1959e8b918b7cbad4
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/issues'
+      sortKey: -300
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: queue
+      value: <ключ очереди>
+      disabled: false
+    - name: filter
+      value: ''
+      disabled: true
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/issues/_search
+    name: Найти задачи (поиск)
+    meta:
+      id: req_1c43de500702451abee4a11d37bee61e
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/_search'
+      sortKey: -350
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"query\": \"<текст запроса на языке Яндекс.Трекера>\",\n  \"filter\": {\n    \"queue\": \"<ключ очереди>\"\
+        ,\n    \"assignee\": \"<логин>\"\n  },\n  \"order\": \"+updatedAt\",\n  \"expand\": \"transitions,attachments\"\n}"
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/issues/_count
+    name: Получить количество задач
+    meta:
+      id: req_aafd1850e4e64cc1a311def4bf7100cc
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/_count'
+      sortKey: -400
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"query\": \"<текст запроса>\",\n  \"filter\": {\n    \"queue\": \"<ключ очереди>\"\n  }\n}"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/changelog
+    name: Получить историю изменений задачи
+    meta:
+      id: req_6c37f738bc814e6f92a0189f61cb7a83
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/issues/{issueId}/changelog'
+      sortKey: -450
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+    - name: field
+      value: ''
+      disabled: true
+    - name: type
+      value: ''
+      disabled: true
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/transitions
+    name: Получить переходы задачи
+    meta:
+      id: req_d25dbe7797624609bca1bc06b61b5a65
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/issues/{issueId}/transitions'
+      sortKey: -500
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/transitions/{transitionId}/_execute
+    name: Выполнить переход в статус
+    meta:
+      id: req_0b89be24612e422cb208434e9a6c2b9f
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/{issueId}/transitions/{transitionId}/_execute'
+      sortKey: -550
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"comment\": \"<комментарий при переходе>\",\n  \"resolution\": {\n    \"key\": \"fixed\"\n  }\n}"
+- name: Задачи — связи
+  meta:
+    id: fld_af49b25e65ed4415b899ff310a2f6cb4
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -200
+  children:
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/links
+    name: Получить связи задачи
+    meta:
+      id: req_1b24bc75e3754e90ae71a2503272aa31
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/issues/{issueId}/links'
+      sortKey: -600
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/links
+    name: Создать связь задачи
+    meta:
+      id: req_5209d17e37064f3bb283e5afd5bf83b3
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/{issueId}/links'
+      sortKey: -650
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"relationship\": \"relates\",\n  \"issue\": \"<ключ связанной задачи>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/links/{linkId}
+    name: Удалить связь задачи
+    meta:
+      id: req_550a9db3b7474e3c81f53e9a4e8bfa6d
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/issues/{issueId}/links/{linkId}'
+      sortKey: -700
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Задачи — внешние связи
+  meta:
+    id: fld_b4670f1829eb493c908b24f1275f449d
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -300
+  children:
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/remotelinks
+    name: Получить внешние связи задачи
+    meta:
+      id: req_8f72e9df6eba41a582f25b11bac3cc52
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/issues/{issueId}/remotelinks'
+      sortKey: -750
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/remotelinks
+    name: Создать внешнюю связь
+    meta:
+      id: req_954768f5f6fd4618bc4afdbaedd32c7d
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/{issueId}/remotelinks'
+      sortKey: -800
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"relationship\": \"relates\",\n  \"url\": \"https://example.com/task/123\",\n  \"title\": \"<название ссылки>\"\
+        \n}"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/remotelinks/{remoteLinkId}
+    name: Получить внешнюю связь
+    meta:
+      id: req_44e5b51ec2b341978f4dffc436d4051f
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/issues/{issueId}/remotelinks/{remoteLinkId}'
+      sortKey: -850
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/remotelinks/{remoteLinkId}
+    name: Изменить внешнюю связь
+    meta:
+      id: req_6780a89e00a9455b85c29d9eb5bb55a8
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/issues/{issueId}/remotelinks/{remoteLinkId}'
+      sortKey: -900
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"relationship\": \"relates\",\n  \"url\": \"https://example.com/task/123\",\n  \"title\": \"<новое название>\"\
+        \n}"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/remotelinks/{remoteLinkId}
+    name: Удалить внешнюю связь
+    meta:
+      id: req_6b16411274b541c48ae3acf70c67b858
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/issues/{issueId}/remotelinks/{remoteLinkId}'
+      sortKey: -950
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Фильтры задач
+  meta:
+    id: fld_e3c7b5b3b7d64b1eba46432df74c45e0
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -400
+  children:
+  - url: https://api.tracker.yandex.net/v3/filters
+    name: Получить все фильтры
+    meta:
+      id: req_45dd284f5c5845ae8ae8ee64772cca55
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/filters'
+      sortKey: -1000
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: owner
+      value: ''
+      disabled: true
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/filters
+    name: Создать фильтр
+    meta:
+      id: req_3a8056d6249f4011b45f5d58301a4122
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/filters'
+      sortKey: -1050
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<название фильтра>\",\n  \"query\": {\n    \"queue\": \"<ключ очереди>\",\n    \"assignee\"\
+        : \"<логин>\"\n  },\n  \"filter\": \"queue: <ключ>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/filters/{filterId}
+    name: Получить фильтр
+    meta:
+      id: req_e13cb09b21964a449c2c784f8dd3bb36
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/filters/{filterId}'
+      sortKey: -1100
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/filters/{filterId}
+    name: Изменить фильтр
+    meta:
+      id: req_2e56ae175f5346f5b55592ed26d11eda
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/filters/{filterId}'
+      sortKey: -1150
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<новое название>\",\n  \"query\": {\n    \"queue\": \"<ключ очереди>\"\n  }\n}"
+  - url: https://api.tracker.yandex.net/v3/filters/{filterId}
+    name: Удалить фильтр
+    meta:
+      id: req_44b1d36d314c49b7af001e7971210d4e
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/filters/{filterId}'
+      sortKey: -1200
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Чеклисты
+  meta:
+    id: fld_f9d479e134ac4ff39c976d283fa56ca8
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -500
+  children:
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/checklistItems
+    name: Получить чеклист задачи
+    meta:
+      id: req_63b7d6143e30429e96bc49ad05e9243d
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/issues/{issueId}/checklistItems'
+      sortKey: -1250
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/checklistItems
+    name: Создать чеклист
+    meta:
+      id: req_97c76a02185e412caa29cb646e17f2ab
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/{issueId}/checklistItems'
+      sortKey: -1300
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "[\n  {\n    \"text\": \"<текст пункта>\",\n    \"checked\": false,\n    \"assignee\": null,\n    \"deadline\"\
+        : null\n  }\n]"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/checklistItems
+    name: Изменить порядок и содержимое чеклиста
+    meta:
+      id: req_20cc371c2f714aabae90f456198de107
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/issues/{issueId}/checklistItems'
+      sortKey: -1350
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "[\n  {\n    \"id\": \"<id пункта>\",\n    \"text\": \"<текст>\",\n    \"checked\": false\n  }\n]"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/checklistItems/{checklistItemId}
+    name: Изменить пункт чеклиста
+    meta:
+      id: req_6ba6bcb69a36452882651527d8976737
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/issues/{issueId}/checklistItems/{checklistItemId}'
+      sortKey: -1400
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"text\": \"<новый текст>\",\n  \"checked\": true\n}"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/checklistItems/{checklistItemId}
+    name: Удалить пункт чеклиста
+    meta:
+      id: req_04b2169747c243c78662b61e915bed35
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/issues/{issueId}/checklistItems/{checklistItemId}'
+      sortKey: -1450
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/checklistItems
+    name: Удалить все пункты чеклиста
+    meta:
+      id: req_4caac002bbb84168a8782f9dfd3cdfe3
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/issues/{issueId}/checklistItems'
+      sortKey: -1500
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Комментарии
+  meta:
+    id: fld_d44d90b61dcf433c824842e7b1a9644e
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -600
+  children:
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/comments
+    name: Получить все комментарии к задаче
+    meta:
+      id: req_384f96d9dd1c4da9a569262d27ee6366
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/issues/{issueId}/comments'
+      sortKey: -1550
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/comments
+    name: Добавить комментарий к задаче
+    meta:
+      id: req_3076489e0cae49c399bf8e755cebc7c6
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/{issueId}/comments'
+      sortKey: -1600
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"text\": \"<текст комментария>\",\n  \"summonees\": [\n    \"<логин_1>\"\n  ],\n  \"maillistSummonees\"\
+        : [\n    \"<почтовый список>\"\n  ]\n}"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/comments/{commentId}
+    name: Изменить комментарий
+    meta:
+      id: req_e25fd88d769f4661a4d68d52b212301c
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/issues/{issueId}/comments/{commentId}'
+      sortKey: -1650
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"text\": \"<новый текст>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/comments/{commentId}
+    name: Удалить комментарий
+    meta:
+      id: req_dda41a8d2267495aa0ce1c842de47701
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/issues/{issueId}/comments/{commentId}'
+      sortKey: -1700
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Прикреплённые файлы
+  meta:
+    id: fld_427e30c8d9e94e0386368009f3a5ef00
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -700
+  children:
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/attachments
+    name: Получить список файлов задачи
+    meta:
+      id: req_9ec564ee095841ba9bb47430364ed17b
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/issues/{issueId}/attachments'
+      sortKey: -1750
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/attachments/{attachmentId}
+    name: Прикрепить файл к задаче
+    meta:
+      id: req_d9e062debaf447fba943664e9ca43ecc
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/{issueId}/attachments/{attachmentId}'
+      sortKey: -1800
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/attachments/{attachmentId}/{filename}
+    name: Скачать файл задачи
+    meta:
+      id: req_63f7f0b735754a8b80386c098490e707
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/issues/{issueId}/attachments/{attachmentId}/{filename}'
+      sortKey: -1850
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/attachments/{attachmentId}
+    name: Удалить файл задачи
+    meta:
+      id: req_78ccfb9558bd41aba8c106ee6eed2003
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/issues/{issueId}/attachments/{attachmentId}'
+      sortKey: -1900
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/attachments
+    name: Создать временный файл
+    meta:
+      id: req_237007e696644ff2a04313a0b7e9b617
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/attachments'
+      sortKey: -1950
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Пакетные операции
+  meta:
+    id: fld_474cb6ff1ad342e8a03734fa31f3deea
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -800
+  children:
+  - url: https://api.tracker.yandex.net/v3/bulkchange/_update
+    name: Массово изменить задачи
+    meta:
+      id: req_ea3863b47097434596c3084f3e351731
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/bulkchange/_update'
+      sortKey: -2000
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"issues\": [\n    \"<ключ задачи 1>\",\n    \"<ключ задачи 2>\"\n  ],\n  \"values\": {\n    \"priority\"\
+        : {\n      \"id\": \"2\",\n      \"key\": \"normal\"\n    },\n    \"assignee\": \"<логин>\"\n  }\n}"
+  - url: https://api.tracker.yandex.net/v3/bulkchange/_transition
+    name: Массово выполнить переход в статус
+    meta:
+      id: req_d4aec809b0c7497a94112d7ce5a996cf
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/bulkchange/_transition'
+      sortKey: -2050
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"issues\": [\n    \"<ключ задачи 1>\",\n    \"<ключ задачи 2>\"\n  ],\n  \"transition\": {\n    \"id\"\
+        : \"<id перехода>\"\n  }\n}"
+  - url: https://api.tracker.yandex.net/v3/bulkchange/_move
+    name: Массово переместить задачи
+    meta:
+      id: req_4207a30cbd484f67acae928667289599
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/bulkchange/_move'
+      sortKey: -2100
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"issues\": [\n    \"<ключ задачи 1>\",\n    \"<ключ задачи 2>\"\n  ]\n}"
+    parameters:
+    - name: queue
+      value: <ключ очереди назначения>
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/bulkchange/{bulkchangeId}
+    name: Получить статус пакетной операции
+    meta:
+      id: req_e5f962e4c0fb4ee796a40e2cb46ab297
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/bulkchange/{bulkchangeId}'
+      sortKey: -2150
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Поля задачи
+  meta:
+    id: fld_2c44b8ae4a7e499aa79892a65da85cc0
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -900
+  children:
+  - url: https://api.tracker.yandex.net/v3/fields
+    name: Получить доступные глобальные поля
+    meta:
+      id: req_4223bffddbcd483a8b5e46ed30e32dba
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/fields'
+      sortKey: -2200
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: category
+      value: ''
+      disabled: true
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/fields
+    name: Создать глобальное поле задачи
+    meta:
+      id: req_1608ab07d6a14f8799b890c98edab5f6
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/fields'
+      sortKey: -2250
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": {\n    \"ru\": \"<название поля на русском>\",\n    \"en\": \"<field name>\"\n  },\n  \"id\":\
+        \ \"<ключ поля>\",\n  \"category\": {\n    \"id\": \"<id категории>\"\n  },\n  \"type\": \"string\",\n  \"readonly\"\
+        : false,\n  \"options\": false,\n  \"suggest\": false\n}"
+- name: Проекты, портфели, цели
+  meta:
+    id: fld_b79afd79022b4a26920db72b8c9a325a
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -1000
+  children:
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}
+    name: Создать сущность (проект/портфель/цель)
+    meta:
+      id: req_19236a2bb09d4fbeac71812bff3baa70
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/entities/{entityType}'
+      sortKey: -2300
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"fields\": {\n    \"summary\": \"<название>\",\n    \"teamUsers\": [\n      {\n        \"id\": \"<id пользователя>\"\
+        \n      }\n    ],\n    \"description\": null,\n    \"deadline\": null,\n    \"start\": null\n  }\n}"
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}
+    name: Получить сущность
+    meta:
+      id: req_25345af1cddd4bb784a97129963224ed
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}'
+      sortKey: -2350
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: expand
+      value: ''
+      disabled: true
+    - name: fields
+      value: ''
+      disabled: true
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}
+    name: Изменить сущность
+    meta:
+      id: req_7f3b292e24574d938c2bf5336af1fbdf
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}'
+      sortKey: -2400
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"fields\": {\n    \"summary\": \"<новое название>\",\n    \"description\": null\n  }\n}"
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}
+    name: Удалить сущность
+    meta:
+      id: req_3df267b6ecf74ea2b037983bec51b45f
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}'
+      sortKey: -2450
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/_search
+    name: Найти сущности
+    meta:
+      id: req_7793350cbb684228a461d92350801f00
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/entities/{entityType}/_search'
+      sortKey: -2500
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"filter\": {\n    \"author\": {\n      \"id\": \"<id автора>\"\n    }\n  },\n  \"orderBy\": \"updatedAt\"\
+        ,\n  \"orderAsc\": false\n}"
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/events
+    name: Получить историю событий сущности
+    meta:
+      id: req_de7a515e29194566a8116778d454b807
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/events'
+      sortKey: -2550
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: after
+      value: ''
+      disabled: true
+- name: Сущности — комментарии
+  meta:
+    id: fld_666f921c68b345eebb6493518500c930
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -1100
+  children:
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/comments
+    name: Получить комментарии к сущности
+    meta:
+      id: req_aa60c5acf4bf423688d806bb21a866a9
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/comments'
+      sortKey: -2600
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: after
+      value: ''
+      disabled: true
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/comments
+    name: Добавить комментарий к сущности
+    meta:
+      id: req_d4a1fc8414b34485afa9d0516e9d1031
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/comments'
+      sortKey: -2650
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"text\": \"<текст комментария>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/comments/{commentId}
+    name: Изменить комментарий сущности
+    meta:
+      id: req_74211b3165ed46408ecf11934814d8cb
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/comments/{commentId}'
+      sortKey: -2700
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"text\": \"<новый текст>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/comments/{commentId}
+    name: Удалить комментарий сущности
+    meta:
+      id: req_9d607f173a3c4eaabbec43dd154b7c43
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/comments/{commentId}'
+      sortKey: -2750
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Сущности — файлы
+  meta:
+    id: fld_1c97f70924384644b2cddaab0af72da8
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -1200
+  children:
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/attachments
+    name: Получить список файлов сущности
+    meta:
+      id: req_6e84564b983f47d1ac03be1aba2c1bdc
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/attachments'
+      sortKey: -2800
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/attachments/{attachmentId}
+    name: Прикрепить файл к сущности
+    meta:
+      id: req_b6dd163f534745d087f766a2b5ae9f74
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/attachments/{attachmentId}'
+      sortKey: -2850
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/attachments/{attachmentId}
+    name: Удалить файл сущности
+    meta:
+      id: req_f7f3dc01617a4e7397bc6fd921801db8
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/attachments/{attachmentId}'
+      sortKey: -2900
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Сущности — связи
+  meta:
+    id: fld_4f15ea2aa3c94574af8882d0e4e44fc0
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -1300
+  children:
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/links
+    name: Получить связи сущности
+    meta:
+      id: req_0f43ffa7919d40cb98db9c406148454e
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/links'
+      sortKey: -2950
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/links
+    name: Создать связь сущности
+    meta:
+      id: req_41f2fdd9b0ce4d91b2e82e59d6f0e8ae
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/links'
+      sortKey: -3000
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"entities\": [\n    {\n      \"id\": \"<id связанной сущности>\"\n    }\n  ],\n  \"relationship\": \"relates\"\
+        \n}"
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/links/{linkId}
+    name: Удалить связь сущности
+    meta:
+      id: req_e23b847c4c564b4f82342622ec940f05
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/links/{linkId}'
+      sortKey: -3050
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Сущности — чеклист
+  meta:
+    id: fld_7e63c85bbf3e4f6f9fec935703da3694
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -1400
+  children:
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/checklistItems
+    name: Получить чеклист сущности
+    meta:
+      id: req_207044a0a90c40f88d63193a5b3ec4df
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/checklistItems'
+      sortKey: -3100
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/checklistItems
+    name: Создать чеклист сущности
+    meta:
+      id: req_35d97f5d51994bf691bb70f1ff2d5519
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/checklistItems'
+      sortKey: -3150
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "[\n  {\n    \"text\": \"<текст пункта>\",\n    \"checked\": false\n  }\n]"
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/checklistItems
+    name: Изменить чеклист сущности
+    meta:
+      id: req_73711c428c5c4881976ba43f58d860b7
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/checklistItems'
+      sortKey: -3200
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "[\n  {\n    \"id\": \"<id пункта>\",\n    \"text\": \"<текст>\",\n    \"checked\": false\n  }\n]"
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/checklistItems/{checklistItemId}
+    name: Изменить пункт чеклиста сущности
+    meta:
+      id: req_0476758a80e64eadb9fe1ac25d56023b
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/checklistItems/{checklistItemId}'
+      sortKey: -3250
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"text\": \"<новый текст>\",\n  \"checked\": true\n}"
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/checklistItems/{checklistItemId}
+    name: Удалить пункт чеклиста сущности
+    meta:
+      id: req_78115b1aa31c473bbca1c451cd23078e
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/checklistItems/{checklistItemId}'
+      sortKey: -3300
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/checklistItems
+    name: Удалить все пункты чеклиста сущности
+    meta:
+      id: req_441b6aac7b134f1ca1542645c682fada
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/entities/{entityType}/{entityId}/checklistItems'
+      sortKey: -3350
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Проекты (старая версия)
+  meta:
+    id: fld_6e9f2eeaad164bbab9905f647091378e
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -1500
+  children:
+  - url: https://api.tracker.yandex.net/v3/projects
+    name: Получить все проекты
+    meta:
+      id: req_ea7a2926c86a415e9e6196780270bd89
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/projects'
+      sortKey: -3400
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/projects
+    name: Создать проект
+    meta:
+      id: req_a6b8a02575e749b7abfbeb05282e90ce
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/projects'
+      sortKey: -3450
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<название проекта>\",\n  \"queues\": [\n    {\n      \"id\": \"1\",\n      \"key\": \"<ключ\
+        \ очереди>\"\n    }\n  ]\n}"
+  - url: https://api.tracker.yandex.net/v3/projects/{projectId}
+    name: Получить проект
+    meta:
+      id: req_bb769c5e829e454d8a426bd98d4bd0ac
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/projects/{projectId}'
+      sortKey: -3500
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/projects/{projectId}
+    name: Изменить проект
+    meta:
+      id: req_c5d48e3f4dfe42c59b6db86c75204e76
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/projects/{projectId}'
+      sortKey: -3550
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<новое название>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/projects/{projectId}
+    name: Удалить проект
+    meta:
+      id: req_29f3ca90ac4549fc8d1946cdcad25864
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/projects/{projectId}'
+      sortKey: -3600
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/projects/{projectId}/issues
+    name: Получить задачи проекта
+    meta:
+      id: req_cec8a10eea62442fb0ecf0b9b97a04b2
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/projects/{projectId}/issues'
+      sortKey: -3650
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+- name: Очереди
+  meta:
+    id: fld_1a8231dd22be45a2ac90627db9a25b29
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -1600
+  children:
+  - url: https://api.tracker.yandex.net/v3/queues
+    name: Получить все очереди
+    meta:
+      id: req_33415da005be4d86a97e0807b7de33aa
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues'
+      sortKey: -3700
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+    - name: expand
+      value: ''
+      disabled: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}
+    name: Получить очередь
+    meta:
+      id: req_b9089f1b022b411a8d9596b3934facae
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}'
+      sortKey: -3750
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: expand
+      value: ''
+      disabled: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/fields
+    name: Получить поля очереди
+    meta:
+      id: req_4a5e2f95affc4b159df74d75a5d2028e
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}/fields'
+      sortKey: -3800
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/tags
+    name: Получить теги очереди
+    meta:
+      id: req_45ca453423b74ab5aa984bb82f87de16
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}/tags'
+      sortKey: -3850
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}
+    name: Удалить очередь
+    meta:
+      id: req_e1674158859b4169a4f8cb21826b64d0
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/queues/{queueId}'
+      sortKey: -3900
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/_restore
+    name: Восстановить очередь из архива
+    meta:
+      id: req_a5144f939d9c4d5eabfd13790cc2559b
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/queues/{queueId}/_restore'
+      sortKey: -3950
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Очереди — версии
+  meta:
+    id: fld_22d103c8aacc45a2a010d5e871a4a2b3
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -1700
+  children:
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/versions
+    name: Получить версии очереди
+    meta:
+      id: req_64e57846c8364c9aa2600622a6f129c5
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}/versions'
+      sortKey: -4000
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/versions
+    name: Создать версию
+    meta:
+      id: req_ccb2e34875fb435da557aacb9329c198
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/queues/{queueId}/versions'
+      sortKey: -4050
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<название версии>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/versions/{versionId}
+    name: Получить версию
+    meta:
+      id: req_877f96dc92e44fb4be1201c04eacd78a
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}/versions/{versionId}'
+      sortKey: -4100
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/versions/{versionId}
+    name: Изменить версию
+    meta:
+      id: req_57ecf17a38fc4c71846128032978a0ea
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/queues/{queueId}/versions/{versionId}'
+      sortKey: -4150
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<новое название>\"\n}"
+- name: Очереди — компоненты
+  meta:
+    id: fld_bbd83de89443499ca6fafa18d36c9b88
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -1800
+  children:
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/components
+    name: Получить компоненты очереди
+    meta:
+      id: req_99cf5a68f5954493abac05918bc21ba7
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}/components'
+      sortKey: -4200
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/components
+    name: Создать компонент
+    meta:
+      id: req_c260314d09084e319a9578e744097ce8
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/queues/{queueId}/components'
+      sortKey: -4250
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<название компонента>\",\n  \"assignAuto\": false\n}"
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/components/{componentId}
+    name: Получить компонент
+    meta:
+      id: req_56d9b2aec4454ff68c664c6d7e3ccf66
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}/components/{componentId}'
+      sortKey: -4300
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/components/{componentId}
+    name: Изменить компонент
+    meta:
+      id: req_073749324b3b4a26b73f8c244733b215
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/queues/{queueId}/components/{componentId}'
+      sortKey: -4350
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<новое название>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/components/{componentId}
+    name: Удалить компонент
+    meta:
+      id: req_99abc478c55b4ae082411205a9176a57
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/queues/{queueId}/components/{componentId}'
+      sortKey: -4400
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Очереди — локальные поля
+  meta:
+    id: fld_6363eed4c7a24bd28b5fc42b7ca91c15
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -1900
+  children:
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/localFields
+    name: Получить локальные поля очереди
+    meta:
+      id: req_4bcdff2aae6546f6bf4f954121fa9aac
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}/localFields'
+      sortKey: -4450
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/localFields
+    name: Создать локальное поле
+    meta:
+      id: req_287807cd1d56466092e7e88734aa61de
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/queues/{queueId}/localFields'
+      sortKey: -4500
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"id\": \"<ключ поля>\",\n  \"name\": {\n    \"ru\": \"<название>\",\n    \"en\": \"<name>\"\n  },\n  \"\
+        type\": \"string\",\n  \"category\": {\n    \"id\": \"<id категории>\"\n  }\n}"
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/localFields/{fieldId}
+    name: Получить локальное поле
+    meta:
+      id: req_f1ad62d3a6164b1d9158ce7d27a8ce96
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}/localFields/{fieldId}'
+      sortKey: -4550
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/localFields/{fieldId}
+    name: Изменить локальное поле
+    meta:
+      id: req_33154e0b3d5e48f5813a0a609d12f4e3
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/queues/{queueId}/localFields/{fieldId}'
+      sortKey: -4600
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": {\n    \"ru\": \"<новое название>\"\n  }\n}"
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/localFields/{fieldId}
+    name: Удалить локальное поле
+    meta:
+      id: req_33c85c0132364a758b7d50fb55b72f17
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/queues/{queueId}/localFields/{fieldId}'
+      sortKey: -4650
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Автодействия
+  meta:
+    id: fld_5d6ea34eb73247e78fae37ab7d955e5b
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -2000
+  children:
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/autoactions
+    name: Получить все автодействия очереди
+    meta:
+      id: req_93106eb33691456b9e9ac6e121a7a19f
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}/autoactions'
+      sortKey: -4700
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/autoactions
+    name: Создать автодействие
+    meta:
+      id: req_dc5ca2f6bc714aecbcc6b4d294968f6b
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/queues/{queueId}/autoactions'
+      sortKey: -4750
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<название>\",\n  \"filter\": [\n    {\n      \"type\": \"AssigneeFilter\",\n      \"user\":\
+        \ {\n        \"id\": \"<id пользователя>\"\n      }\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"Transition\"\
+        ,\n      \"status\": {\n        \"key\": \"closed\"\n      }\n    }\n  ]\n}"
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/autoactions/{autoactionId}
+    name: Получить автодействие
+    meta:
+      id: req_a232c61f41374c8bab4d9df68ad6c61c
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}/autoactions/{autoactionId}'
+      sortKey: -4800
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/autoactions/{autoactionId}
+    name: Изменить автодействие
+    meta:
+      id: req_ee39fccc42fe4d788302a4e382129aee
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/queues/{queueId}/autoactions/{autoactionId}'
+      sortKey: -4850
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<новое название>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/autoactions/{autoactionId}
+    name: Удалить автодействие
+    meta:
+      id: req_156a5671ce704dbfb44b0bb8b6d9d927
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/queues/{queueId}/autoactions/{autoactionId}'
+      sortKey: -4900
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Триггеры
+  meta:
+    id: fld_2c08c654dac54cb4a1601409068281f2
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -2100
+  children:
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/triggers
+    name: Получить все триггеры очереди
+    meta:
+      id: req_3ad1abd357f74c44b2a62d6d6a98b8af
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}/triggers'
+      sortKey: -4950
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/triggers
+    name: Создать триггер
+    meta:
+      id: req_562769454d504ac1978ffaf13c1d3288
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/queues/{queueId}/triggers'
+      sortKey: -5000
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<название триггера>\",\n  \"conditions\": [\n    {\n      \"type\": \"FieldChangedCondition\"\
+        ,\n      \"field\": {\n        \"id\": \"status\"\n      },\n      \"from\": null,\n      \"to\": {\n        \"key\"\
+        : \"closed\"\n      }\n    }\n  ],\n  \"actions\": [\n    {\n      \"type\": \"CommentAction\",\n      \"body\": \"\
+        <текст комментария>\"\n    }\n  ]\n}"
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/triggers/{triggerId}
+    name: Получить триггер
+    meta:
+      id: req_9dd3be110d0445e8bf5a9f857829880d
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}/triggers/{triggerId}'
+      sortKey: -5050
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/triggers/{triggerId}
+    name: Изменить триггер
+    meta:
+      id: req_8cae674ece2b48b5834f859460296b15
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/queues/{queueId}/triggers/{triggerId}'
+      sortKey: -5100
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<новое название>\",\n  \"active\": true\n}"
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/triggers/{triggerId}
+    name: Удалить триггер
+    meta:
+      id: req_6e094442a7e64eaabbc033827e907e05
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/queues/{queueId}/triggers/{triggerId}'
+      sortKey: -5150
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Макросы
+  meta:
+    id: fld_885949c51eea4b9cab306f5896e072ad
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -2200
+  children:
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/macros
+    name: Получить все макросы очереди
+    meta:
+      id: req_d5374f703d4541af9a35c3d312fba008
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}/macros'
+      sortKey: -5200
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/macros
+    name: Создать макрос
+    meta:
+      id: req_6c38b9439bd5489491b59888d95a6082
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/queues/{queueId}/macros'
+      sortKey: -5250
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<название макроса>\",\n  \"body\": \"<текст комментария, добавляемого при исполнении>\",\n \
+        \ \"actions\": [\n    {\n      \"type\": \"transition\",\n      \"status\": {\n        \"key\": \"closed\"\n     \
+        \ }\n    }\n  ]\n}"
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/macros/{macroId}
+    name: Получить макрос
+    meta:
+      id: req_b0dd62a29f564bfea2c99145b3ef02ba
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/queues/{queueId}/macros/{macroId}'
+      sortKey: -5300
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/macros/{macroId}
+    name: Изменить макрос
+    meta:
+      id: req_ad5a9237b0114033898e979e0af6cca8
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/queues/{queueId}/macros/{macroId}'
+      sortKey: -5350
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<новое название>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/queues/{queueId}/macros/{macroId}
+    name: Удалить макрос
+    meta:
+      id: req_7422bb55639d4a5cb9ff0a461df778b0
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/queues/{queueId}/macros/{macroId}'
+      sortKey: -5400
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Доски задач
+  meta:
+    id: fld_4657e637e38948e591c67cf334dba45d
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -2300
+  children:
+  - url: https://api.tracker.yandex.net/v3/boards
+    name: Получить все доски
+    meta:
+      id: req_a80b4cb1604c40a3ad25285e67ecc117
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/boards'
+      sortKey: -5450
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/boards/{boardId}
+    name: Получить доску
+    meta:
+      id: req_1dcec6c102f24a2185473603e6f0fa85
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/boards/{boardId}'
+      sortKey: -5500
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/boards
+    name: Создать доску
+    meta:
+      id: req_fda047bc2e1a49b3a07f050fe398b322
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/boards'
+      sortKey: -5550
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<название доски>\",\n  \"boardType\": \"scrum\",\n  \"filter\": {\n    \"queue\": [\n      {\n\
+        \        \"key\": \"<ключ очереди>\"\n      }\n    ]\n  }\n}"
+  - url: https://api.tracker.yandex.net/v3/boards/{boardId}
+    name: Изменить доску
+    meta:
+      id: req_d5095b66270642d284c17838fdfaec91
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/boards/{boardId}'
+      sortKey: -5600
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<новое название>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/boards/{boardId}
+    name: Удалить доску
+    meta:
+      id: req_34a4e2b3651a43f7a9a6caadada65469
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/boards/{boardId}'
+      sortKey: -5650
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Доски — колонки
+  meta:
+    id: fld_be2216d43b7f489f85bf505cc9d06cb5
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -2400
+  children:
+  - url: https://api.tracker.yandex.net/v3/boards/{boardId}/columns
+    name: Получить колонки доски
+    meta:
+      id: req_65406054dfcf4b8cbc4f1e570e43a329
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/boards/{boardId}/columns'
+      sortKey: -5700
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/boards/{boardId}/columns
+    name: Создать колонку доски
+    meta:
+      id: req_39d1aab1825d4567a0369d80098faee1
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/boards/{boardId}/columns'
+      sortKey: -5750
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<название колонки>\",\n  \"statuses\": [\n    {\n      \"key\": \"open\"\n    }\n  ]\n}"
+  - url: https://api.tracker.yandex.net/v3/boards/{boardId}/columns/{columnId}
+    name: Получить колонку доски
+    meta:
+      id: req_5921906d8345435784a69aacbb5bc03d
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/boards/{boardId}/columns/{columnId}'
+      sortKey: -5800
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/boards/{boardId}/columns/{columnId}
+    name: Изменить колонку доски
+    meta:
+      id: req_02fd127462e842699c5b5ea7c2cb5d8c
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/boards/{boardId}/columns/{columnId}'
+      sortKey: -5850
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<новое название>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/boards/{boardId}/columns/{columnId}
+    name: Удалить колонку доски
+    meta:
+      id: req_61d0fb8aff1943988f9dfe8913f813d6
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/boards/{boardId}/columns/{columnId}'
+      sortKey: -5900
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Доски — спринты
+  meta:
+    id: fld_990305b64ed6452499980e86546c2703
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -2500
+  children:
+  - url: https://api.tracker.yandex.net/v3/boards/{boardId}/sprints
+    name: Получить спринты доски
+    meta:
+      id: req_93c3041853654dd78677dd21241ae14c
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/boards/{boardId}/sprints'
+      sortKey: -5950
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/boards/{boardId}/sprints
+    name: Создать спринт
+    meta:
+      id: req_e7a2f9c9d5644bc9a90cf0a2bea9d0fc
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/boards/{boardId}/sprints'
+      sortKey: -6000
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<название спринта>\",\n  \"startDate\": \"2024-01-01T00:00:00.000+0000\",\n  \"endDate\": \"\
+        2024-01-14T00:00:00.000+0000\"\n}"
+  - url: https://api.tracker.yandex.net/v3/boards/{boardId}/sprints/{sprintId}
+    name: Получить спринт
+    meta:
+      id: req_5d68ec1b80f84c1081c98c0506420111
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/boards/{boardId}/sprints/{sprintId}'
+      sortKey: -6050
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/boards/{boardId}/sprints/{sprintId}
+    name: Изменить спринт
+    meta:
+      id: req_7d798945120f47b89322d6246dda1385
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/boards/{boardId}/sprints/{sprintId}'
+      sortKey: -6100
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<новое название>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/boards/{boardId}/sprints/{sprintId}
+    name: Удалить спринт
+    meta:
+      id: req_e120bcc3804e4162a80d133559aea377
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/boards/{boardId}/sprints/{sprintId}'
+      sortKey: -6150
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Дашборды
+  meta:
+    id: fld_254e0af20e50497d8a7c2c4011653b09
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -2600
+  children:
+  - url: https://api.tracker.yandex.net/v3/dashboards
+    name: Получить все дашборды
+    meta:
+      id: req_472e31c2ff71483994b6ded7cedc1f7f
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/dashboards'
+      sortKey: -6200
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/dashboards/{dashboardId}
+    name: Получить дашборд
+    meta:
+      id: req_6eca7220bf304704b5672e4366deef01
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/dashboards/{dashboardId}'
+      sortKey: -6250
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/dashboards
+    name: Создать дашборд
+    meta:
+      id: req_c24da65aafb244c495e7e2c9ec6fe579
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/dashboards'
+      sortKey: -6300
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<название дашборда>\",\n  \"widgets\": []\n}"
+  - url: https://api.tracker.yandex.net/v3/dashboards/{dashboardId}
+    name: Изменить дашборд
+    meta:
+      id: req_f0dbf0c6af1641f5b7c2da9dab8ae00a
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/dashboards/{dashboardId}'
+      sortKey: -6350
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<новое название>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/dashboards/{dashboardId}
+    name: Удалить дашборд
+    meta:
+      id: req_b94ce7628e2743d3b4773f0dcc9c090d
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/dashboards/{dashboardId}'
+      sortKey: -6400
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Компоненты
+  meta:
+    id: fld_8683ef2bd8dc47dabe349acf19e04606
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -2700
+  children:
+  - url: https://api.tracker.yandex.net/v3/components
+    name: Получить все компоненты
+    meta:
+      id: req_b188915b96b541f6b694421d280f51d1
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/components'
+      sortKey: -6450
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/components
+    name: Создать компонент
+    meta:
+      id: req_9dccf81ccb834ab28e6615f65a75032a
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/components'
+      sortKey: -6500
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<название>\",\n  \"queue\": {\n    \"id\": \"1\",\n    \"key\": \"<ключ очереди>\"\n  },\n \
+        \ \"assignAuto\": false\n}"
+  - url: https://api.tracker.yandex.net/v3/components/{componentId}
+    name: Получить компонент
+    meta:
+      id: req_7b03ff9086f444f18dae50f84136e5e5
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/components/{componentId}'
+      sortKey: -6550
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/components/{componentId}
+    name: Изменить компонент
+    meta:
+      id: req_358b0a3e204449d088d32870a843bfd8
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/components/{componentId}'
+      sortKey: -6600
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"name\": \"<новое название>\"\n}"
+  - url: https://api.tracker.yandex.net/v3/components/{componentId}
+    name: Удалить компонент
+    meta:
+      id: req_6b1148a9d81a44e4b7fe731c22ba6d62
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/components/{componentId}'
+      sortKey: -6650
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Типы задач
+  meta:
+    id: fld_a8e39b9cb52a421485c80a8ebbf33161
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -2800
+  children:
+  - url: https://api.tracker.yandex.net/v3/issuetypes
+    name: Получить все типы задач
+    meta:
+      id: req_4942c704ce0541c9b48e42a5d3bbc2b2
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/issuetypes'
+      sortKey: -6700
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/issuetypes/{typeId}
+    name: Получить тип задачи
+    meta:
+      id: req_62a6732b5ab74a4cb771bd6b44d75e26
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/issuetypes/{typeId}'
+      sortKey: -6750
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Статусы
+  meta:
+    id: fld_9a53a435554e4f4e86a2ae3e2ea6f2bb
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -2900
+  children:
+  - url: https://api.tracker.yandex.net/v3/statuses
+    name: Получить все статусы
+    meta:
+      id: req_d9ca00c50b9a4ebba5589535e94f3ebd
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/statuses'
+      sortKey: -6800
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/statuses/{statusId}
+    name: Получить статус
+    meta:
+      id: req_fb9ff2e940824250b088466c1b343cc1
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/statuses/{statusId}'
+      sortKey: -6850
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Резолюции
+  meta:
+    id: fld_13bd11ac3b9146a0ad62db226148802d
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -3000
+  children:
+  - url: https://api.tracker.yandex.net/v3/resolutions
+    name: Получить все резолюции
+    meta:
+      id: req_42b8256cc25441a5953e39ccd5e19b63
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/resolutions'
+      sortKey: -6900
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/resolutions/{resolutionId}
+    name: Получить резолюцию
+    meta:
+      id: req_da29417b4b384bdbb8d6efe4141feccf
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/resolutions/{resolutionId}'
+      sortKey: -6950
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Приоритеты
+  meta:
+    id: fld_d980f6f863934c2c8b7c527b91c93b00
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -3100
+  children:
+  - url: https://api.tracker.yandex.net/v3/priorities
+    name: Получить все приоритеты
+    meta:
+      id: req_83d41bb2841a462e9e1cc4dc9faf9a6a
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/priorities'
+      sortKey: -7000
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/priorities/{priorityId}
+    name: Получить приоритет
+    meta:
+      id: req_e4fdad8b351b497bbdb691a95b59af1e
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/priorities/{priorityId}'
+      sortKey: -7050
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Учёт времени
+  meta:
+    id: fld_2e0c3cf5243a45e49005ab4dfb2f0963
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -3200
+  children:
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/worklogs
+    name: Получить записи о времени задачи
+    meta:
+      id: req_bbaea29df8e348bda84e92679e48e286
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/issues/{issueId}/worklogs'
+      sortKey: -7100
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/worklogs
+    name: Добавить запись о затраченном времени
+    meta:
+      id: req_cec597fd6d194786afb62786ef2da096
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/{issueId}/worklogs'
+      sortKey: -7150
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"start\": \"2024-01-15T10:00:00.000+0000\",\n  \"duration\": \"PT3H\",\n  \"comment\": \"<комментарий>\"\
+        \n}"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/worklogs/{worklogId}
+    name: Изменить запись о затраченном времени
+    meta:
+      id: req_adefdc88523446979baf4731e3cedef3
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: PATCH https://api.tracker.yandex.net/v3/issues/{issueId}/worklogs/{worklogId}'
+      sortKey: -7200
+    method: PATCH
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"start\": \"2024-01-15T10:00:00.000+0000\",\n  \"duration\": \"PT3H\",\n  \"comment\": \"<новый комментарий>\"\
+        \n}"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/worklogs/{worklogId}
+    name: Удалить запись о затраченном времени
+    meta:
+      id: req_fc671f824a5c4f21a63b25e471e97d3e
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: DELETE https://api.tracker.yandex.net/v3/issues/{issueId}/worklogs/{worklogId}'
+      sortKey: -7250
+    method: DELETE
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+- name: Импорт
+  meta:
+    id: fld_5699669dcbf349efb250ca93bbb9fa97
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -3300
+  children:
+  - url: https://api.tracker.yandex.net/v3/issues/_import
+    name: Импортировать задачи
+    meta:
+      id: req_b784519622864175a804adcb7c6d8138
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/_import'
+      sortKey: -7300
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"queue\": {\n    \"key\": \"<ключ очереди>\"\n  },\n  \"summary\": \"<название задачи>\",\n  \"createdBy\"\
+        : {\n    \"id\": \"<id автора>\"\n  },\n  \"createdAt\": \"2024-01-01T00:00:00.000+0000\",\n  \"comments\": [],\n\
+        \  \"attachments\": [],\n  \"links\": []\n}"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/attachments/_import
+    name: Импортировать файлы к задаче
+    meta:
+      id: req_ec397cd95e574c4d8e8448c8feb02cbb
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/{issueId}/attachments/_import'
+      sortKey: -7350
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"createdBy\": {\n    \"id\": \"<id пользователя>\"\n  },\n  \"createdAt\": \"2024-01-01T00:00:00.000+0000\"\
+        \n}"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/comments/_import
+    name: Импортировать комментарии к задаче
+    meta:
+      id: req_bcbe5c4ced8e4f1bb42a03b4a8e91d7a
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/{issueId}/comments/_import'
+      sortKey: -7400
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"text\": \"<текст комментария>\",\n  \"createdBy\": {\n    \"id\": \"<id автора>\"\n  },\n  \"createdAt\"\
+        : \"2024-01-01T00:00:00.000+0000\"\n}"
+  - url: https://api.tracker.yandex.net/v3/issues/{issueId}/worklogs/_import
+    name: Импортировать записи о времени
+    meta:
+      id: req_34a72b9dc65b4a77b589700a29b81666
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: POST https://api.tracker.yandex.net/v3/issues/{issueId}/worklogs/_import'
+      sortKey: -7450
+    method: POST
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    - name: Content-Type
+      value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    body:
+      mimeType: application/json
+      text: "{\n  \"start\": \"2024-01-15T10:00:00.000+0000\",\n  \"duration\": \"PT3H\",\n  \"createdBy\": {\n    \"id\"\
+        : \"<id автора>\"\n  },\n  \"createdAt\": \"2024-01-01T00:00:00.000+0000\"\n}"
+- name: Пользователи
+  meta:
+    id: fld_e30a7cbff0ec4983a843a6090c8f670a
+    created: 1777919928237
+    modified: 1777919928237
+    sortKey: -3400
+  children:
+  - url: https://api.tracker.yandex.net/v3/myself
+    name: Получить текущего пользователя
+    meta:
+      id: req_d8bef52461f1444c952bda4d50425013
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/myself'
+      sortKey: -7500
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: https://api.tracker.yandex.net/v3/users
+    name: Получить список пользователей организации
+    meta:
+      id: req_9dba45dea320480ea584ae5167f722e5
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/users'
+      sortKey: -7550
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+    parameters:
+    - name: perPage
+      value: '50'
+      disabled: false
+    - name: page
+      value: '1'
+      disabled: false
+  - url: https://api.tracker.yandex.net/v3/users/{userId}
+    name: Получить пользователя по ID
+    meta:
+      id: req_e2142d1232664303a7fa79396d97b5a1
+      created: 1777919928237
+      modified: 1777919928237
+      isPrivate: false
+      description: 'Документация: https://yandex.ru/support/tracker/ru/api-ref/
+
+        Метод: GET https://api.tracker.yandex.net/v3/users/{userId}'
+      sortKey: -7600
+    method: GET
+    headers:
+    - name: Authorization
+      value: OAuth {{token}}
+    - name: X-Org-ID
+      value: '{{org_id}}'
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
