@@ -1,0 +1,10 @@
+.pip/
+openapi.json
+generate_insomnia.py
+generate_tracker_insomnia.py
+Startrek_API_Insomnia.yaml
+package.json
+tsconfig.json
+src/
+dist/
+node_modules/
