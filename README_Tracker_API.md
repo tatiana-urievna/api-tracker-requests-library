@@ -1,6 +1,6 @@
-# Yandex Tracker API v3 — Insomnia Collection
+# Yandex Tracker API v3 — Коллекция запросов
 
-Коллекция HTTP-запросов для [Insomnia](https://insomnia.rest/) на основе официальной документации:  
+Коллекция HTTP-запросов для [Insomnia](https://insomnia.rest/), [Postman](https://www.postman.com/) и [Bruno](https://www.usebruno.com/) на основе официальной документации:  
 **https://yandex.ru/support/tracker/ru/api-ref/about-api**
 
 ## Содержимое
@@ -49,10 +49,7 @@
 1. Открой Insomnia
 2. **File → Import → From File**
 3. Выбери `Tracker_API_Insomnia.yaml`
-
-## Переменные окружения
-
-После импорта создай окружение (**Environments → Manage Environments**) и добавь переменные:
+4. Создай окружение: **Environments → Manage Environments** и добавь переменные:
 
 ```json
 {
@@ -60,6 +57,58 @@
   "org_id": "<ID организации>"
 }
 ```
+
+---
+
+## Импорт в Postman
+
+Файл `Tracker_API_Insomnia.yaml` совместим с форматом Insomnia v5 — Postman импортирует его напрямую.
+
+1. Открой Postman
+2. **Import → Upload Files** → выбери `Tracker_API_Insomnia.yaml`
+3. Postman автоматически создаст коллекцию с папками
+4. Настрой переменные окружения: **Environments → Add**
+
+```json
+{
+  "token": "<твой OAuth-токен>",
+  "org_id": "<ID организации>"
+}
+```
+
+5. В запросах переменные `{{token}}` и `{{org_id}}` подтянутся автоматически
+
+> Если Postman не принимает YAML — переименуй файл в `.json` и конвертируй через [yaml-to-json.com](https://www.convertjson.com/yaml-to-json.htm), либо используй формат экспорта Insomnia v4 (JSON).
+
+---
+
+## Импорт в Bruno
+
+Bruno не поддерживает прямой импорт формата Insomnia v5 YAML, но позволяет создать коллекцию вручную или через импорт Postman Collection v2.
+
+**Вариант 1 — через Postman Collection:**
+1. Сначала импортируй коллекцию в Postman (см. выше)
+2. В Postman: **Export → Collection v2.1**
+3. В Bruno: **Import Collection → Postman**
+
+**Вариант 2 — напрямую:**
+1. Открой Bruno
+2. **Create Collection** → укажи папку для коллекции
+3. **Import → Insomnia** → выбери `Tracker_API_Insomnia.yaml`
+
+**Переменные окружения в Bruno:**  
+Создай файл `environments/prod.bru` в папке коллекции:
+
+```
+vars {
+  token: <твой OAuth-токен>
+  org_id: <ID организации>
+}
+```
+
+---
+
+## Переменные окружения
 
 | Переменная | Заголовок | Где используется |
 |---|---|---|
